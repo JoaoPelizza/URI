@@ -16,9 +16,12 @@ int main(void){
     pesos.push_back(peso);
   }
 
-  for(list<int>::iterator aux = ++pesos.begin();aux!=pesos.end();aux++){
+  for(list<int>::iterator i = pesos.begin();i!=pesos.end();i++){
+    for(list<int>::iterator j = i++ ; j!=pesos.end() ; j++ ){
 
-    cout << *(aux) << endl;
+    }
+
+    cout << *(i) << endl;
   }
 
   return 0;
