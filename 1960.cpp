@@ -1,123 +1,151 @@
 #include <bits/stdc++.h>
-
+//peguei lógica das interwebs
 using namespace std;
 
-int main(void){
+void sp(int i);
+void pp(int n);
 
-  int num;
-  cin >> num;
-  int m,d,c,l,x,v,i;
-  m=num/1000;
-  d=(num%1000)/500;
-  c=(num%500)/100;
-  l=(num%100)/50;
-  x=(num%50)/10;
-  v=(num%10)/5;
-  i=num%5;
+int total,i,j;
 
-  cout << m << d << c << l << x << v << i << endl;
+int main()
+{
+    int cent;
+    while(scanf("%d",&total)!=EOF){
+        if(total>99){
+            cent=total/100;
+            if(cent==4){
+                cout << "CD";
+                total = total-400;
+                pp(total);
+                cout << endl;
+            }
+            else if(cent==9){
+                cout <<("CM");
+                total = total-900;
+                pp(total);
+                cout <<("\n");
+            }
+            else if(cent==1){
+                cout <<("C");
+                total = total-100;
+                pp(total);
+                cout <<("\n");
+            }
+            else if(cent==2){
+                cout <<("CC");
+                total = total-200;
+                pp(total);
+                cout <<("\n");
+            }
+            else if(cent==3){
+                cout <<("CCC");
+                total = total-300;
+                pp(total);
+                cout <<("\n");
+            }
+            else if(cent==5){
+                cout <<("D");
+                total = total-500;
+                pp(total);
+                cout <<("\n");
+            }
+            else if(cent==6){
+                cout <<("DC");
+                total = total-600;
+                pp(total);
+                cout <<("\n");
+            }
+            else if(cent==7){
+                cout <<("DCC");
+                total = total-700;
+                pp(total);
+                cout <<("\n");
+            }
+            else if(cent==8){
+                cout <<("DCCC");
+                total = total-800;
+                pp(total);
+                cout <<("\n");
+            }
+        }
+        else if(total >= 10 && total < 100){
+            pp(total);
+            cout <<("\n");
+        }
+        else if(total<10){
+            i=total;
+            sp(i);
+            cout <<("\n");
+        }
 
-  if(d==4){
-    m++;
-    d-=4;
-    cout << "D";
-  }
-  if(c==4){
-    d++;
-    c-=4;
-    cout << "C";
-  }
-  if(l==4){
-    c++;
-    l-=4;
-    cout << "L";
-  }
-  if(x==4){
-    l++;
-    x-=4;
-    cout << "X";
-  }
-  if(v==4){
-    x++;
-    v-=4;
-    cout << "V";
-  }
-  if(i==4){
-    v++;
-    i-=4;
-    cout << "I";
-  }
-////////////////////////////////////////////////////////////////////
-  if(i==5){
-    v++;
-    i-=5;
-  }
-  if(v==2){
-    x++;
-    v-=2;
-  }
-  if(x==5){
-    l++;
-    x-=5;
-  }
-  if(l==2){
-    c++;
-    l-=2;
-  }
-  if(c==5){
-    d++;
-    c-=5;
-  }
-  if(d==2){
-    m++;
-    d-=2;
-  }
-  //cout << m << d << c << l << x << v << i << endl;
-  int total=(m*1000)+(d*500)+(c*100)+(l*50)+(x*10)+(v*5)+i;
-
-  while(total>0){
-
-    if(m>0){
-      cout << "M";
-      m--;
-      total-=1000;
-    }
-    if(d>0){
-      cout << "D";
-      d--;
-      total-=500;
-    }
-    if(c>0){
-      cout << "C";
-      c--;
-      total-=100;
-    }
-    if(l>0){
-      cout << "L";
-      l--;
-      total-=50;
-    }
-    if(x>0){
-      cout << "X";
-      x--;
-      total-=10;
-    }
-    if(v>0){
-      cout << "V";
-      v--;
-      total-=5;
-    }
-    if(i>0){
-      cout << "I";
-      i--;
-      total-=1;
     }
 
-  }
-
-  cout << endl;
-
-  return 0;
+    return 0;
 }
-//8 == VIII
-//9 == IX
+
+
+void sp(int i){
+    if(i==1)cout <<("I");
+    else if(i==2)cout <<("II");
+    else if(i==3)cout <<("III");
+    else if(i==4)cout <<("IV");
+    else if(i==5)cout <<("V");
+    else if(i==6)cout <<("VI");
+    else if(i==7)cout <<("VII");
+    else if(i==8)cout <<("VIII");
+    else if(i==9)cout <<("IX");
+}
+
+
+void pp(int total){
+    j = total/10;
+    if(j==1){
+        cout <<("X");
+        i = total-10;
+        sp(i);
+    }
+    else if(j==2){
+        cout <<("XX");
+        i = total-20;
+        sp(i);
+    }
+    else if(j==3){
+        cout <<("XXX");
+        i = total-30;
+        sp(i);
+    }
+    else if(j==4){
+        cout <<("XL");
+        i = total-40;
+        sp(i);
+    }
+    else if(j==5){
+        cout <<("L");
+        i = total - 50;
+        sp(i);
+    }
+    else if(j==6){
+        cout <<("LX");
+        i = total-60;
+        sp(i);
+    }
+    else if(j==7){
+        cout <<("LXX");
+        i = total-70;
+        sp(i);
+    }
+    else if(j==8){
+        cout <<("LXXX");
+        i = total-80;
+        sp(i);
+    }
+    else if(j==9){
+        cout <<("XC");
+        i = total-90;
+        sp(i);
+    }
+    else if(j==0){
+        i=total;
+        sp(i);
+    }
+}
