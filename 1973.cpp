@@ -3,53 +3,48 @@
 using namespace std;
 
 int main(void){
-  vector<int> estrelas;
 
+  long long int N;
+  cin >> N;
+  long long int *estrelas = (long long int*)malloc(N * sizeof(long long int));
+  long long int carneiros = 0;
 
-  int loop;
-  cin >> loop;
-  long long total_ovelhas=0;
-  for(vector<int>::iterator aux=estrelas.begin();loop>0;aux++,loop--){
-    int ovelhas;
-    cin >> ovelhas;
-    total_ovelhas+=ovelhas;
-    estrelas.push_back(ovelhas);
+  for(int aux = 0; aux < N ; aux++ ){
+    cin >> estrelas[aux];
+    carneiros += estrelas[aux];
   }
 
-  vector<int> vitimas;
-  for( unsigned int aux=0; aux < estrelas.size() && estrelas[aux]!=0;){
+  long long int *vitimas = (long long int*)malloc(N*sizeof(long long int));
+  for(int aux=0;aux<N;aux++){
+    vitimas[aux] = 0;
+  }
+
+  long long int num_vitimas = 0;
+  long long int roubados = 0;
 
 
-    int ja_ta_dentro=0;
-    for( vector<int>::iterator aux2 = vitimas.begin(); aux2!=vitimas.end() ; aux2++){
-      if(signed (aux) == *aux2){
-        ja_ta_dentro++;
-      }
+  for(int aux=0;aux<N && aux>=0;){
+
+    if(estrelas[aux]==0) break;
+
+    if(vitimas[aux] == 0){
+      num_vitimas++;
+      vitimas[aux] = 1;
     }
 
-    if(ja_ta_dentro==0){
-      vitimas.push_back(aux);
-    }
-
-
-    if(estrelas[aux]%2==1){
+    if(estrelas[aux] % 2 == 1){
+      roubados++;
       estrelas[aux]--;
-      total_ovelhas--;
       aux++;
     }
 
-    else if(estrelas[aux]%2==0){
+    else if(estrelas[aux] % 2 == 0){
+      roubados++;
       estrelas[aux]--;
-      total_ovelhas--;
       aux--;
     }
 
   }
-
-  cout  << vitimas.size() << " " << total_ovelhas << endl;
-
-
-
-
+  cout << num_vitimas << " " << carneiros-roubados << endl;
   return 0;
 }
